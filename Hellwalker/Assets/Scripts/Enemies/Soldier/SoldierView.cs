@@ -2,33 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierView : ObjectView
+public class SoldierView : EnemyView
 {
-    [Header("References")]
-    [SerializeField] private DestructibleObjectScript destructible;
-    [SerializeField] private float initialHP;
-    public override void OnCreate(Context context)
-    {
-        destructible.doragdoll = false;
-        destructible.myhealth = initialHP;
-    }
 
     // Start is called before the first frame update
     void Awake()
     {
-        destructible = this.GetComponent<DestructibleObjectScript>();
-        initialHP = destructible.myhealth;
+
     }
 
-    /// <summary>
-    /// Kill this object
-    /// </summary>
-    public void Suicide(bool doragdoll = false)
+    public override void OnCreate(Context context)
     {
-        if(doragdoll)
-        {
-            destructible.doragdoll = true;
-        }
-        destructible.myhealth = 0;
+
     }
+
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+
 }
